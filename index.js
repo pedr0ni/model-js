@@ -1,6 +1,11 @@
 const mysql = require('promise-mysql');
 const User = require('./User');
 
+/**
+ * 
+ * Class by example
+ */
+
 mysql.createConnection({
     host     : '',
     user     : '',
@@ -8,15 +13,10 @@ mysql.createConnection({
     database : ''
 }).then((connection) => {
     
-    console.log(connection);
     let user_model = new User(connection);
 
     console.log("[INFO] Application started.");
-    user_model.find(1).then((results) => {
-        console.log(results[0].user);
-    });
-    connection.end();
-    console.log("[INFO] Connection ended.");
-
+    user_model.create({id: 10});
+    
 });
 
